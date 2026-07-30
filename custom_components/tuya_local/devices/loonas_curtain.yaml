@@ -42,12 +42,7 @@ entities:
           min: 0
           max: 100
         mapping:
-          - constraint: direction
-            conditions:
-              - dps_val: null
-                invert: true
-              - dps_val: forward
-                invert: true
+          - invert: true
       - id: 3
         name: current_position
         type: integer
@@ -56,12 +51,7 @@ entities:
           min: 0
           max: 100
         mapping:
-          - constraint: direction
-            conditions:
-              - dps_val: null
-                invert: true
-              - dps_val: forward
-                invert: true
+          - invert: true
       - id: 5
         type: string
         optional: true
