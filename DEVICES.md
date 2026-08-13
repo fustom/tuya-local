@@ -220,10 +220,10 @@
 
 ### Water heaters
 
-- Apricus heat pump water heater
 - A.O. Smith HeatBot 15L electric water heater
+- Apricus heat pump water heater
 - Aqua Plus APAIO270 heat pump water heater
-- Aquatech Rapid/X6 heat pump water heater
+- Aquatech Rapid/X6 and X8 Fusion heat pump water heaters
 - Aquaviva AVH15S combo air-water heat pump
 - Arçelik AHPH-MM series combo air-water heat pump
 - Axen KS-100W/EN8BP combo heat pump (rebranded as Arielli)
@@ -257,6 +257,7 @@
 - Shuangri SR223 solar water heating controller
 - Sime EcoMaxi VB200 heat pump water heater
 - SolarEast (Adlar Castra) Aurora II heat pump
+- SPT Dark Knight heat pump water heater
 - Tauclima DGN-250 heat pump water heater
 - Thermann R290 heat pump water heater
 - Thermex IF series V pro and Lima 80V hot water systems
@@ -332,6 +333,7 @@
 - Polytherm Polyalpha thermostat
 - ProWarm Touch Button S series underfloor heating controller
 - Psmart T436 thermostat
+- Rhino King XNW-AC 3-speed and Smart AC thermostats
 - RYRA TYTE-D1 thermostat with energy monitoring
 - Sajun steam room
 - Salcar T9W thermostat _(likely also Tellur TSH02)_
@@ -353,6 +355,7 @@
 - Aeratron AE3+ ceiling fan (may match other Aeratron models with same WiFi module)
 - Airwoods AV-EW8/DF heat recovery ventilation with humidity control
 - Amico 52" ceiling fan with light
+- Anderic UC7235T4 ceiling fan receiver
 - Anko HEGSM40 fan
 - Arida Venti 160 small through-wall heat-recovery ventilation fan
 - Arlec ceiling fan and light remote control kit (CFR225HA also works for Sulion Cadillac)
@@ -424,7 +427,7 @@
 - Klarstein Airfold, Bolero ceiling fans with light
 - Klarstein Icewind Plus, Skyscraper Ice, Skytower Grand cooling fans
 - Keyun MKCFE002 RGB chandelier fan
-- Kogan bladeless and 3D oscillating fans
+- Kogan bladeless, 3D oscillating and heating fans
 - Ledkia fan and light controller
 - Ledvance Ceiling fan with light
 - Lexy F501 fan
@@ -755,6 +758,7 @@
 - Demuda 4048/6048 MPPT solar charge controller
 - Dowell iOneAIO EV charger
 - EcoPoint EV charger
+- eLoad Gen2 EV charger
 - Emini 16A Public EV charger
 - EVSun EV charger
 - Feyree EV charger (several models)
@@ -1069,6 +1073,7 @@ of device.
 
 - Abir X8 and X9 vacuum cleaners
 - Airrobo P20 vacuum cleaner
+- Blaupunkt XBoost vacuum cleaner
 - Cecotec Conga 1970, X70, Z100 vacuum cleaners
 - Gadnic AC800 mopping vacuum cleaner
 - Horniture G20, Q6 Pro vacuum cleaners
@@ -1207,7 +1212,7 @@ port and password.
 - Doel cat litter box
 - Duoqu Neo-A cat litter box
 - Dxophiex fish feeder
-- Els Pet Spaceship pet litter box
+- Els Pet Spaceship and Orbitie pet litter boxes
 - Evergreen Solar bird feeder camera
 - Faroro PF50 pet feeder
 - Faroro TD20 pet treat camera
@@ -1290,7 +1295,7 @@ port and password.
 - ARD-100+ valve controller
 - Aubess Rainpoint TTP106W irrigation system
 - Becasmart BAF-908 irrigation system
-- FrankEver BV05 water valve
+- FrankEver BV05 and other water valves
 - Frizzlife LP365P water monitor shut-off valve
 - Garza Wi-Fi garden irrigation system (ITV103W with 433MHz WiFi hub)
 - Gidrolock Standard water leak detection valve
@@ -1329,6 +1334,7 @@ port and password.
 - Bresser Smart 7-in-1 weather station
 - Bresser Smart Thermo-hygrometer
 - BW salt pool chlorinator
+- BWT Energy Saver pool pump controller
 - Chtoocy MC82 refrigerator thermometer
 - CO2-Box air quality monitor
 - CO2v1 carbon dioxide sensor
@@ -1400,6 +1406,7 @@ port and password.
 - Ryakka 7-in-1 smart pool monitor
 - Satisure power outage alarm
 - SD123 HPR01 human presence radar
+- Shrivee dual water timer
 - Shrivee triple water timer
 - SNT957W-TDE temperature sensor
 - SNT957W-DE CBU temperature and humidity sensor
@@ -1524,7 +1531,7 @@ entity types as sub devices.
 - WL-898WZ water leak sensor
 - WL-RTCZ-05Z human presence sensor
 - Zemismart SPM01 energy meter
-- Zemismart ZM85EL-1x roller blind motor
+- Zemismart ZM85EL-1x and ZM25EL roller blind motors
 - ZPmeter 214C-Z water meter (with and without valve control)
 - ZTH08ZTU temperature and humidity sensor
 

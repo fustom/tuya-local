@@ -925,3 +925,17 @@ Further device support has been made with the assistance of users. Please consid
 - [toolson](https://github.com/toolson) for contributing support for Powerworld PW030-KZXYC-E pool heat pump.
 - [digitalvir](https://github.com/digitalvir) for contributing support for Lumary C2 ceiling fan with RGB+CW light.
 - [grinser](https://github.com/grinser) for contributing improvements to Costway portable AC.
+- [lucasoskorep](https://github.com/lucasoskorep) for contributing improvements to Friedrich air conditioner.
+- [devonuto](https://github.com/devonuto) for contributing support for Zemismart ZM25EL roller shade.
+- [sthomas727](https://github.com/sthomas727) for contributing support for Elspet Orbitie litter box.
+- [odiechoo](https://github.com/odiechoo) for contributing support for SPT Dark Knight water heater.
+- [fuentesdelafuente](https://github.com/fuentesdelafuente) for contributing support for Tongou TOWSMR1-40A breaker.
+- [larstobi](https://github.com/larstobi) for contributing support for Frankever water valve and improvements to valves in general.
+- [nitaybz](https://github.com/nitaybz) for contributing improved subdevice unique id allocation.
+- [doctordarko](https://github.com/doctordarko) for contributing improvements to Dreamlight LED light.
+- [calexander3](https://github.com/calexander3) for contributing support for Anderic UC7235T4 ceiling fan receiver.
+- [jrhrsmit](https://github.com/jrhrsmit) for contributing support for Blaupunkt XBoost robot vacuum.
+- [SiwatS](https://github.com/SiwatS) for contributing support for Kogan heater fan.
+- [pranksta02](https://github.com/pranksta02) for contributing support for Aquatech X8 Fusion water heater.
+- [matisere38](https://github.com/matisere38) for contributing support for BWT Energy Saver pool controller.
+- [zhuguoqing123](https://github.com/zhuguoqing123) for contributing support for Rhino King XNW-AC and Smart AC thermostats.
