@@ -156,6 +156,7 @@
                             "chamber_low_temperature": "Kammer lav temperatur beskyttelse",
                             "chamber_overheat": "Kammer overoppheting beskyttelse",
                             "communication_error": "Kommunikasjonsfeil",
+                            "door_open": "Dør åpen",
                             "drain_blocked": "Avløp blokkert",
                             "evaporation_tray_low_temperature": "Evaporation tray lav temperatur beskyttelse",
                             "evaporation_tray_overheat": "Evaporation tray overoppheting beskyttelse",
@@ -163,6 +164,8 @@
                             "firewall_sensor_fault": "Feil på brannveggsensor",
                             "gas_leak": "Gasslekkasje",
                             "heating_fault": "Feil på oppvarming",
+                            "high_temperature": "Høy temperatur",
+                            "low_temperature": "Lav temperatur",
                             "no_water": "Ingen vann",
                             "ok": "OK",
                             "overflow": "Overløp",
@@ -212,6 +215,13 @@
                 "state": {
                     "off": "OK",
                     "on": "Lav"
+                }
+            },
+            "water_flow": {
+                "name": "Vannstrøm",
+                "state": {
+                    "off": "Blokkert",
+                    "on": "Normal"
                 }
             }
         },
@@ -413,6 +423,9 @@
         "event": {
             "alarm": {
                 "name": "Alarm"
+            },
+            "notification": {
+                "name": "Varsel"
             }
         },
         "humidifier": {
@@ -441,6 +454,7 @@
                             "medium": "Medium",
                             "high": "Høy",
                             "strong": "Sterk",
+                            "fresh": "Fresh",
                             "displayoff": "Skjerm av"
                         }
                     }
@@ -678,6 +692,7 @@
                     "english_child": "English (Child)",
                     "french": "Français",
                     "german": "Deutsch",
+                    "hungarian": "Magyar",
                     "italian": "Italiano",
                     "japanese": "日本語",
                     "korean": "한국어",
@@ -692,7 +707,15 @@
                     "romanian": "Română",
                     "slovak": "Slovenčina",
                     "thai": "ไทย",
-                    "vietnamese": "Tiếng Việt"
+                    "vietnamese": "Tiếng Việt",
+                    "english_au": "English (Australia)",
+                    "english_ca": "English (Canada)",
+                    "english_in": "English (India)",
+                    "english_us": "English (United States)",
+                    "french_ca": "Français (Canada)",
+                    "hindi": "हिंदी",
+                    "spanish_us": "Español (Estados Unidos)",
+                    "off": "Av"
                 }
             },
             "light_mode": {
@@ -703,7 +726,20 @@
                     "state": "Tilstand",
                     "locator": "Lokaliser",
                     "auto": "Auto",
-                    "flash": "Blinke"
+                    "flash": "Blinke",
+                    "breathe": "Puste",
+                    "random": "Tilfeldig",
+                    "color": "Farge",
+                    "favorite": "Favoritt",
+                    "multi_color": "Flerfarget",
+                    "custom": "Egendefinert",
+                    "mode_1": "Modus 1",
+                    "mode_2": "Modus 2",
+                    "mode_3": "Modus 3",
+                    "door": "Dør",
+                    "24h": "24 timer",
+                    "30m": "30 minutter",
+                    "1m": "1 minutt"
                 }
             },
             "mopping": {
@@ -792,6 +828,8 @@
                 "state": {
                     "cancel": "Avbryt",
                     "continuous": "Kontinuerlig",
+                    "custom": "Egendefinert",
+                    "immediate": "Umiddelbar",
                     "5s": "5 sekunder",
                     "10s": "10 sekunder",
                     "15s": "15 sekunder",
@@ -864,7 +902,16 @@
                     "4d": "4 dager",
                     "5d": "5 dager",
                     "6d": "6 dager",
-                    "7d": "7 dager"
+                    "7d": "7 dager",
+                    "10d": "10 dager",
+                    "30d": "30 dager",
+                    "60d": "60 dager",
+                    "80d": "80 dager",
+                    "90d": "90 dager",
+                    "100d": "100 dager",
+                    "120d": "120 dager",
+                    "160d": "160 dager",
+                    "365d": "365 dager"
                 }
             },
             "temperature_unit": {
@@ -1154,6 +1201,12 @@
             "ambient_temperature": {
                 "name": "Omgivelsestemperatur"
             },
+            "inlet_temperature": {
+                "name": "Inntakstemperatur"
+            },
+            "outlet_temperature": {
+                "name": "Uttakstemperatur"
+            },
             "cleanliness": {
                 "name": "Renhet",
                 "state": {
@@ -1171,6 +1224,17 @@
                     "poor": "Dårlig",
                     "severe": "Alvorlig",
                     "danger": "Farlig"
+                }
+            },
+            "sd_status": {
+                "name": "SD-kortstatus",
+                "state": {
+                    "fault": "Feil",
+                    "formatting": "Formaterer",
+                    "full": "Full",
+                    "missing": "Manglende",
+                    "normal": "Normal",
+                    "unformatted": "Uformaterte"
                 }
             },
             "status": {
@@ -1232,6 +1296,7 @@
                     "occupied": "Opptatt",
                     "normal": "Normal",
                     "low": "Lav",
+                    "medium": "Medium",
                     "high": "Høy",
                     "unwashed": "Uvasket",
                     "pre_washing": "Forvasking",
@@ -1251,8 +1316,6 @@
                     "full": "Full",
                     "empty": "Tom",
                     "missing": "Manglende",
-                    "formatting": "Formatering",
-                    "unformatted": "Uformaterte",
                     "failed": "Mislyktes",
                     "replying": "Svarer",
                     "playback": "Avspilling",
@@ -1373,6 +1436,9 @@
                     "off": "Åpen",
                     "on": "Lukket"
                 }
+            },
+            "camera_record": {
+                "name": "Kameraopptak"
             },
             "do_not_disturb": {
                 "name": "Ikke forstyrr"

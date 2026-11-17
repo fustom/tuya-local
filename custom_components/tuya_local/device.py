@@ -5,7 +5,6 @@ API for Tuya Local devices.
 import asyncio
 import logging
 from asyncio.exceptions import CancelledError
-from threading import Lock
 from time import time
 
 import tinytuya
@@ -126,7 +125,7 @@ class TuyaLocalDevice(object):
                             "tuyadevice": self._api,
                             "tuyadevicelock": self._api_lock,
                         }
-        except Exception as e:
+        except BaseException as e:
             _LOGGER.error(
                 "%s: %s while initialising device %s",
                 type(e).__name__,
@@ -157,7 +156,7 @@ class TuyaLocalDevice(object):
         # we can overlay onto the state while we wait for the board to update
         # its switches.
         self._FAKE_IT_TIMEOUT = 5
-        self._CACHE_TIMEOUT = 30
+        self._POLLING_INTERVAL = 30
         self._HEARTBEAT_INTERVAL = 5
         # More attempts are needed in auto mode so we can cycle through all
         # the possibilities a couple of times
@@ -165,7 +164,6 @@ class TuyaLocalDevice(object):
         self._SINGLE_PROTO_CONNECTION_ATTEMPTS = 3
         # The number of failures from a working protocol before retrying other protocols.
         self._AUTO_FAILURE_RESET_COUNT = 10
-        self._lock = Lock()
 
     @property
     def name(self):
@@ -279,7 +277,7 @@ class TuyaLocalDevice(object):
                         # let entities trigger off poll contents directly
                         try:
                             entity.on_receive(poll, full_poll)
-                        except Exception as e:
+                        except BaseException as e:
                             # Don't let exceptions thrown by the entities interrupt the communication loop
                             # Just log them and move on.
                             _LOGGER.exception(
@@ -288,6 +286,7 @@ class TuyaLocalDevice(object):
                                 entity.entity_id,
                                 e,
                             )
+
                         # clear non-persistant dps that were not in a full poll
                         if full_poll:
                             for dp in entity._config.dps():
@@ -302,7 +301,7 @@ class TuyaLocalDevice(object):
                     )
             _LOGGER.warning("%s receive loop has terminated", self.name)
 
-        except Exception as t:
+        except BaseException as t:
             _LOGGER.exception(
                 "%s receive loop terminated by exception %s", self.name, t
             )
@@ -342,15 +341,17 @@ class TuyaLocalDevice(object):
             self._api.parent.set_socketPersistent(persist)
 
         last_heartbeat = self._cached_state.get("updated_at", 0)
+        wifi_api = self._api.parent or self._api
         while self._running:
             error_count = self._api_working_protocol_failures
             force_backoff = False
             try:
-                await self._api_lock.acquire()
                 last_cache = self._cached_state.get("updated_at", 0)
                 now = time()
                 full_poll = False
-                if persist == self.should_poll:
+                if (persist == self.should_poll) or (
+                    persist and (wifi_api.socket is None)
+                ):
                     # use persistent connections after initial communication
                     # has been established.  Until then, we need to rotate
                     # the protocol version, which seems to require a fresh
@@ -364,8 +365,8 @@ class TuyaLocalDevice(object):
                         self._api.parent.set_socketPersistent(persist)
                     self._last_full_poll = 0  # ensure we start with a full poll
 
-                needs_full_poll = now - self._last_full_poll > self._CACHE_TIMEOUT
-                if now - last_cache > self._CACHE_TIMEOUT or (
+                needs_full_poll = now - self._last_full_poll > self._POLLING_INTERVAL
+                if now - last_cache > self._POLLING_INTERVAL or (
                     persist and needs_full_poll
                 ):
                     if (
@@ -406,7 +407,15 @@ class TuyaLocalDevice(object):
                     poll = None
 
                 if poll:
-                    if "Error" in poll:
+                    if "Err" in poll:
+                        # Limit disconnects to the errors that are caused low level
+                        # communication problems
+                        if poll["Err"] in {"901", "902", "905", "906", "914"}:
+                            force_backoff = True
+                            persist = False
+                            self._api.set_socketPersistent(False)
+                            if self._api.parent:
+                                self._api.parent.set_socketPersistent(False)
                         # increment the error count if not done already
                         if error_count == self._api_working_protocol_failures:
                             self._api_working_protocol_failures += 1
@@ -440,7 +449,7 @@ class TuyaLocalDevice(object):
                 if self._api.parent:
                     self._api.parent.set_socketPersistent(False)
                 raise
-            except Exception as t:
+            except BaseException as t:
                 _LOGGER.exception(
                     "%s receive loop error %s:%s",
                     self.name,
@@ -452,10 +461,8 @@ class TuyaLocalDevice(object):
                 if self._api.parent:
                     self._api.parent.set_socketPersistent(False)
                 force_backoff = True
-            finally:
-                if self._api_lock.locked():
-                    self._api_lock.release()
-            if not self.has_returned_state:
+
+            if not self.has_returned_state or wifi_api.socket is None:
                 force_backoff = True
             await asyncio.sleep(5 if force_backoff else 0.1)
 
@@ -652,17 +659,13 @@ class TuyaLocalDevice(object):
         )
 
     def _set_values(self, properties):
-        try:
-            self._lock.acquire()
-            self._api.set_multiple_values(properties, nowait=True)
-            now = time()
-            self._last_connection = now
-            pending_updates = self._get_pending_updates()
-            for key in properties.keys():
-                pending_updates[key]["updated_at"] = now
-                pending_updates[key]["sent"] = True
-        finally:
-            self._lock.release()
+        self._api.set_multiple_values(properties, nowait=True)
+        now = time()
+        self._last_connection = now
+        pending_updates = self._get_pending_updates()
+        for key in properties.keys():
+            pending_updates[key]["updated_at"] = now
+            pending_updates[key]["sent"] = True
 
     async def _retry_on_failed_connection(self, func, error_message):
         if self._api_protocol_version_index is None:
@@ -686,7 +689,8 @@ class TuyaLocalDevice(object):
         for i in range(connections):
             try:
                 if not self._hass.is_stopping:
-                    retval = await self._hass.async_add_executor_job(func)
+                    async with self._api_lock:
+                        retval = await self._hass.async_add_executor_job(func)
                     if isinstance(retval, dict) and "Error" in retval:
                         last_err_code = retval.get("Err")
                         last_err_msg = retval.get("Error")
@@ -702,7 +706,7 @@ class TuyaLocalDevice(object):
                     self._api_protocol_working = True
                     self._api_working_protocol_failures = 0
                     return retval
-            except Exception as e:
+            except BaseException as e:
                 _LOGGER.debug(
                     "Retrying after exception %s %s (%d/%d)",
                     type(e).__name__,

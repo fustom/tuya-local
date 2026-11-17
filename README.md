@@ -3,8 +3,6 @@
 Please report any [issues](https://github.com/make-all/tuya-local/issues) and feel free to raise [pull requests](https://github.com/make-all/tuya-local/pulls).
 [Many others](https://github.com/make-all/tuya-local/blob/main/ACKNOWLEDGEMENTS.md) have contributed their help already.
 
-[![BuyMeCoffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/jasonrumney)
-
 This is a Home Assistant integration to support devices running Tuya
 firmware without going via the Tuya cloud.  Devices are supported
 over WiFi, limited support for devices connected via hubs is available.
@@ -32,16 +30,14 @@ easier to set up using that, or another more recent fork, as an alternative.
 
 ## Installation
 
-[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg?style=for-the-badge)](https://github.com/hacs/integration)
-
-Installation is easiest via the [Home Assistant Community Store
-(HACS)](https://hacs.xyz/), which is the best place to get third-party
-integrations for Home Assistant. Once you have HACS set up, simply click the button below (requires My Homeassistant configured) or
+Installation is easiest via the Marketplace in Home Assistant 2026.11 or later
+(HACS in earlier versions), which is the best place to get third-party
+integrations for Home Assistant. Simply click the button below (requires My Homeassistant configured) or
 follow the [instructions for adding a custom
-repository](https://hacs.xyz/docs/faq/custom_repositories) and then
+repository](https://www.home-assistant.io/integrations/marketplace/#custom-repositories) and then
 the integration will be available to install like any other.
 
-[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=make-all&repository=tuya-local&category=integration)
+[![Open your Home Assistant instance and open a repository inside the Marketplace.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=make-all&repository=tuya-local&category=integration)
 
 ## Configuration
 

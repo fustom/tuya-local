@@ -156,6 +156,7 @@
                             "chamber_low_temperature": "Niska temperatura komory",
                             "chamber_overheat": "Przegrzanie komory",
                             "communication_error": "Błąd komunikacji",
+                            "door_open": "Drzwi otwarte",
                             "drain_blocked": "Zatkany odpływ",
                             "evaporation_tray_low_temperature": "Niska temperatura tacki parownika",
                             "evaporation_tray_overheat": "Przegrzanie tacki parownika",
@@ -163,6 +164,8 @@
                             "firewall_sensor_fault": "Awaria czujnika firewall",
                             "gas_leak": "Wycieczka gazu",
                             "heating_fault": "Awaria ogrzewania",
+                            "high_temperature": "Wysoka temperatura",
+                            "low_temperature": "Niska temperatura",
                             "no_water": "Brak wody",
                             "ok": "OK",
                             "overflow": "Przelew",
@@ -212,6 +215,13 @@
                 "state": {
                     "off": "OK",
                     "on": "Niski"
+                }
+            },
+            "water_flow": {
+                "name": "Przepływ wody",
+                "state": {
+                    "off": "Zablokowany przepływ",
+                    "on": "Przepływ"
                 }
             }
         },
@@ -413,6 +423,9 @@
         "event": {
             "alarm": {
                 "name": "Alarm"
+            },
+            "notification": {
+                "name": "Powiadomienie"
             }
         },
         "humidifier": {
@@ -441,6 +454,7 @@
                             "medium": "Średni",
                             "high": "Wysoki",
                             "strong": "Silny",
+                            "fresh": "Świeży",
                             "displayoff": "Wyłączone podświetlanie"
                         }
                     }
@@ -678,6 +692,7 @@
                     "english_child": "English (Child)",
                     "french": "Français",
                     "german": "Deutsch",
+                    "hungarian": "Magyar",
                     "italian": "Italiano",
                     "japanese": "日本語",
                     "korean": "한국어",
@@ -692,7 +707,15 @@
                     "romanian": "Română",
                     "slovak": "Slovenčina",
                     "thai": "ไทย",
-                    "vietnamese": "Tiếng Việt"
+                    "vietnamese": "Tiếng Việt",
+                    "english_au": "English (Australia)",
+                    "english_ca": "English (Canada)",
+                    "english_in": "English (India)",
+                    "english_us": "English (United States)",
+                    "french_ca": "Français (Canada)",
+                    "hindi": "हिंदी",
+                    "spanish_us": "Español (Estados Unidos)",
+                    "off": "Wyłączony"
                 }
             },
             "light_mode": {
@@ -703,7 +726,20 @@
                     "state": "Stan",
                     "locator": "Lokalizator",
                     "auto": "Auto",
-                    "flash": "Błysk"
+                    "flash": "Błysk",
+                    "breathe": "Oddychanie",
+                    "random": "Losowy",
+                    "color": "Kolor",
+                    "favorite": "Ulubiony",
+                    "multi_color": "Wielokolorowy",
+                    "custom": "Niestandardowy",
+                    "mode_1": "Tryb 1",
+                    "mode_2": "Tryb 2",
+                    "mode_3": "Tryb 3",
+                    "door": "Drzwi",
+                    "24h": "24h",
+                    "30m": "30 minut",
+                    "1m": "1 minuta"
                 }
             },
             "mopping": {
@@ -792,6 +828,8 @@
                 "state": {
                     "cancel": "Anuluj",
                     "continuous": "Ciągły",
+                    "custom": "Niestandardowy",
+                    "immediate": "Natychmiastowy",
                     "5s": "5 sekund",
                     "10s": "10 sekund",
                     "15s": "15 sekund",
@@ -864,7 +902,16 @@
                     "4d": "4 dni",
                     "5d": "5 dni",
                     "6d": "6 dni",
-                    "7d": "7 dni"
+                    "7d": "7 dni",
+                    "10d": "10 dni",
+                    "30d": "30 dni",
+                    "60d": "60 dni",
+                    "80d": "80 dni",
+                    "90d": "90 dni",
+                    "100d": "100 dni",
+                    "120d": "120 dni",
+                    "160d": "160 dni",
+                    "365d": "365 dni"
                 }
             },
             "temperature_unit": {
@@ -1154,6 +1201,12 @@
             "ambient_temperature": {
                 "name": "Temperatura otoczenia"
             },
+            "inlet_temperature": {
+                "name": "Temperatura wlotowa"
+            },
+            "outlet_temperature": {
+                "name": "Temperatura wylotowa"
+            },
             "cleanliness": {
                 "name": "Czystość",
                 "state": {
@@ -1171,6 +1224,17 @@
                     "poor": "Zła",
                     "severe": "Bardzo zła",
                     "danger": "Niebezpieczna"
+                }
+            },
+            "sd_status": {
+                "name": "Status karty SD",
+                "state": {
+                    "fault": "Usterka",
+                    "formatting": "Formatowanie",
+                    "full": "Pełna",
+                    "missing": "Brakująca",
+                    "normal": "Normalny",
+                    "unformatted": "Niesformatowana"
                 }
             },
             "status": {
@@ -1232,6 +1296,7 @@
                     "occupied": "Zajęty",
                     "normal": "Normalny",
                     "low": "Niski",
+                    "medium": "Średni",
                     "high": "Wysoki",
                     "unwashed": "Niewyprane",
                     "pre_washing": "Przed myciem",
@@ -1251,8 +1316,6 @@
                     "full": "Pełne",
                     "empty": "Puste",
                     "missing": "Brakujące",
-                    "formatting": "Formatowanie",
-                    "unformatted": "Niesformatowane",
                     "failed": "Nieudane",
                     "replying": "Odpowiadanie",
                     "playback": "Odtwarzanie",
@@ -1373,6 +1436,9 @@
                     "off": "Otwarty",
                     "on": "Zamknięty"
                 }
+            },
+            "camera_record": {
+                "name": "Nagrywanie kamery"
             },
             "do_not_disturb": {
                 "name": "Nie przeszkadzać"

@@ -156,6 +156,7 @@
                             "chamber_low_temperature": "Χαμηλή θερμοκρασία θαλάμου",
                             "chamber_overheat": "Υπερθέρμανση θαλάμου",
                             "communication_error": "Σφάλμα επικοινωνίας",
+                            "door_open": "Ανοιχτή πόρτα",
                             "drain_blocked": "Φραγμένη αποχέτευση",
                             "evaporation_tray_low_temperature": "Χαμηλή θερμοκρασία δίσκου εξάτμισης",
                             "evaporation_tray_overheat": "Υπερθέρμανση δίσκου εξάτμισης",
@@ -163,6 +164,8 @@
                             "firewall_sensor_fault": "Σφάλμα αισθητήρα firewall",
                             "gas_leak": "Διαρροή αερίου",
                             "heating_fault": "Σφάλμα θέρμανσης",
+                            "high_temperature": "Υψηλή θερμοκρασία",
+                            "low_temperature": "Χαμηλή θερμοκρασία",
                             "no_water": "Χωρίς νερό",
                             "ok": "OK",
                             "overflow": "Υπερχείλιση",
@@ -212,6 +215,13 @@
                 "state": {
                     "off": "OK",
                     "on": "Χαμηλή στάθμη"
+                }
+            },
+            "water_flow": {
+                "name": "Ροή νερού",
+                "state": {
+                    "off": "Μπλοκαρισμένη ροή",
+                    "on": "Κανονική ροή"
                 }
             }
         },
@@ -413,6 +423,9 @@
         "event": {
             "alarm": {
                 "name": "Συναγερμός"
+            },
+            "notification": {
+                "name": "Ειδοποίηση"
             }
         },
         "humidifier": {
@@ -441,6 +454,7 @@
                             "medium": "Μεσαία",
                             "high": "Υψηλή",
                             "strong": "Δυνατή",
+                            "fresh": "Φρέσκια",
                             "displayoff": "Σβήσιμο οθόνης"
                         }
                     }
@@ -678,6 +692,7 @@
                     "english_child": "English (Child)",
                     "french": "Français",
                     "german": "Deutsch",
+                    "hungarian": "Magyar",
                     "italian": "Italiano",
                     "japanese": "日本語",
                     "korean": "한국어",
@@ -692,7 +707,15 @@
                     "romanian": "Română",
                     "slovak": "Slovenčina",
                     "thai": "ไทย",
-                    "vietnamese": "Tiếng Việt"
+                    "vietnamese": "Tiếng Việt",
+                    "english_au": "English (Australia)",
+                    "english_ca": "English (Canada)",
+                    "english_in": "English (India)",
+                    "english_us": "English (United States)",
+                    "french_ca": "Français (Canada)",
+                    "hindi": "हिंदी",
+                    "spanish_us": "Español (Estados Unidos)",
+                    "off": "Απενεργοποίηση"
                 }
             },
             "light_mode": {
@@ -703,7 +726,20 @@
                     "state": "Κατάσταση",
                     "locator": "Εντοπισμός",
                     "auto": "Αυτόματο",
-                    "flash": "Φλας"
+                    "flash": "Φλας",
+                    "breathe": "Αναπνοή",
+                    "random": "Τυχαίο",
+                    "color": "Χρώμα",
+                    "favorite": "Αγαπημένο",
+                    "multi_color": "Πολύχρωμο",
+                    "custom": "Προσαρμοσμένο",
+                    "mode_1": "Λειτουργία 1",
+                    "mode_2": "Λειτουργία 2",
+                    "mode_3": "Λειτουργία 3",
+                    "door": "Πόρτα",
+                    "24h": "24 ώρες",
+                    "30m": "30 λεπτά",
+                    "1m": "1 λεπτό"
                 }
             },
             "mopping": {
@@ -792,6 +828,8 @@
                 "state": {
                     "cancel": "Ακύρωση",
                     "continuous": "Συνεχής",
+                    "custom": "Προσαρμοσμένο",
+                    "immediate": "Άμεση",
                     "5s": "5 δευτερόλεπτα",
                     "10s": "10 δευτερόλεπτα",
                     "15s": "15 δευτερόλεπτα",
@@ -864,7 +902,16 @@
                     "4d": "4 ημέρες",
                     "5d": "5 ημέρες",
                     "6d": "6 ημέρες",
-                    "7d": "7 ημέρες"
+                    "7d": "7 ημέρες",
+                    "10d": "10 ημέρες",
+                    "30d": "30 ημέρες",
+                    "60d": "60 ημέρες",
+                    "80d": "80 ημέρες",
+                    "90d": "90 ημέρες",
+                    "100d": "100 ημέρες",
+                    "120d": "120 ημέρες",
+                    "160d": "160 ημέρες",
+                    "365d": "365 ημέρες"
                 }
             },
             "temperature_unit": {
@@ -1154,6 +1201,12 @@
             "ambient_temperature": {
                 "name": "Θερμοκρασία περιβάλλοντος"
             },
+            "inlet_temperature": {
+                "name": "Θερμοκρασία εισόδου"
+            },
+            "outlet_temperature": {
+                "name": "Θερμοκρασία εξόδου"
+            },
             "cleanliness": {
                 "name": "Καθαριότητα",
                 "state": {
@@ -1171,6 +1224,17 @@
                     "poor": "Κακή",
                     "severe": "Σοβαρή",
                     "danger": "Επικίνδυνη"
+                }
+            },
+            "sd_status": {
+                "name": "Κατάσταση κάρτας SD",
+                "state": {
+                    "fault": "Σφάλμα",
+                    "formatting": "Μορφοποίηση",
+                    "full": "Πλήρης",
+                    "missing": "Ελλιπής",
+                    "normal": "Κανονική",
+                    "unformatted": "Μη μορφοποιημένη"
                 }
             },
             "status": {
@@ -1232,6 +1296,7 @@
                     "occupied": "Κατειλημμένο",
                     "normal": "Κανονικό",
                     "low": "Χαμηλό",
+                    "medium": "Μεσαίο",
                     "high": "Υψηλό",
                     "unwashed": "Ανεπεξέργαστο",
                     "pre_washing": "Προπλύση",
@@ -1251,8 +1316,6 @@
                     "full": "Πλήρες",
                     "empty": "Άδειο",
                     "missing": "Ελλιπές",
-                    "formatting": "Μορφοποίηση",
-                    "unformatted": "Μη μορφοποιημένο",
                     "failed": "Απέτυχε",
                     "replying": "Απάντηση",
                     "playback": "Αναπαραγωγή",
@@ -1373,6 +1436,9 @@
                     "off": "Ανοιχτός",
                     "on": "Κλειστός"
                 }
+            },
+            "camera_record": {
+                "name": "Εγγραφή κάμερας"
             },
             "do_not_disturb": {
                 "name": "Μην ενοχλείτε"

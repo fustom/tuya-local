@@ -3,10 +3,9 @@ import logging
 from collections import OrderedDict
 from typing import Any
 
+import probatio as vol
 import tinytuya
-import voluptuous as vol
 from homeassistant.config_entries import (
-    CONN_CLASS_LOCAL_PUSH,
     ConfigEntry,
     ConfigFlow,
     OptionsFlow,
@@ -53,8 +52,7 @@ DEVICE_DETAILS_URL = (
 
 class ConfigFlowHandler(ConfigFlow, domain=DOMAIN):
     VERSION = 13
-    MINOR_VERSION = 22
-    CONNECTION_CLASS = CONN_CLASS_LOCAL_PUSH
+    MINOR_VERSION = 25
     device = None
     data = {}
 
@@ -519,22 +517,26 @@ class ConfigFlowHandler(ConfigFlow, domain=DOMAIN):
                     "Local product id differs from cloud: %s",
                     self.__discovered_device.get("local_product_id"),
                 )
-            try:
-                self.init_cloud()
-                model = await self.cloud.async_get_datamodel(
-                    self.__discovered_device.get("id"),
-                )
-                if model:
-                    _LOGGER.warning(
-                        "Partial cloud device spec:\n%s",
-                        log_json(model),
-                    )
-            except Exception as e:
-                _LOGGER.warning(
-                    "Unable to fetch data model from cloud: %s %s",
-                    type(e).__name__,
-                    e,
-                )
+            # Don't log the partial cloud spec. It confuses users into
+            # thinking they do not need to download the full Query Things Data Model
+            # result.
+            #
+            # try:
+            #     self.init_cloud()
+            #     model = await self.cloud.async_get_datamodel(
+            #         self.__discovered_device.get("id"),
+            #     )
+            #     if model:
+            #         _LOGGER.warning(
+            #             "Partial cloud device spec:\n%s",
+            #             log_json(model),
+            #         )
+            # except Exception as e:
+            #     _LOGGER.warning(
+            #         "Unable to fetch data model from cloud: %s %s",
+            #         type(e).__name__,
+            #         e,
+            #     )
         _LOGGER.warning(
             "Device matches %s with quality of %d%%. LOCAL DPS: %s",
             best_matching_type,

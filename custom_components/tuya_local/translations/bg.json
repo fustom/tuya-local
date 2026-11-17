@@ -156,6 +156,7 @@
                             "chamber_low_temperature": "Ниска температура в камерата",
                             "chamber_overheat": "Прегряване в камерата",
                             "communication_error": "Грешка в комуникацията",
+                            "door_open": "Вратата е отворена",
                             "drain_blocked": "Блокирано отводняване",
                             "evaporation_tray_low_temperature": "Ниска температура на тавата за изпарение",
                             "evaporation_tray_overheat": "Прегряване на тавата за изпарение",
@@ -163,6 +164,8 @@
                             "firewall_sensor_fault": "Грешка в сензора на защитната стена",
                             "gas_leak": "Газова утечка",
                             "heating_fault": "Грешка в отоплението",
+                            "high_temperature": "Висока температура",
+                            "low_temperature": "Ниска температура",
                             "no_water": "Няма вода",
                             "ok": "OK",
                             "overflow": "Преливане",
@@ -212,6 +215,13 @@
                 "state": {
                     "off": "OK",
                     "on": "Ниско"
+                }
+            },
+            "water_flow": {
+                "name": "Воден поток",
+                "state": {
+                    "off": "Блокиран",
+                    "on": "Поток"
                 }
             }
         },
@@ -413,6 +423,9 @@
         "event": {
             "alarm": {
                 "name": "Аларма"
+            },
+            "notification": {
+                "name": "Известие"
             }
         },
         "humidifier": {
@@ -441,6 +454,7 @@
                             "medium": "Средно",
                             "high": "Високо",
                             "strong": "Силен",
+                            "fresh": "Свежо",
                             "displayoff": "Дисплеят е изключен"
                         }
                     }
@@ -680,6 +694,7 @@
                     "english_child": "English (Child)",
                     "french": "Français",
                     "german": "Deutsch",
+                    "hungarian": "Magyar",
                     "italian": "Italiano",
                     "japanese": "日本語",
                     "korean": "한국어",
@@ -693,7 +708,15 @@
                     "thai": "ภาษาไทย",
                     "turkish": "Türkçe",
                     "polish": "Polski",
-                    "vietnamese": "Tiếng Việt"
+                    "vietnamese": "Tiếng Việt",
+                    "english_au": "English (Australia)",
+                    "english_ca": "English (Canada)",
+                    "english_in": "English (India)",
+                    "english_us": "English (United States)",
+                    "french_ca": "Français (Canada)",
+                    "hindi": "हिंदी",
+                    "spanish_us": "Español (Estados Unidos)",
+                    "off": "Изключено"
                 }
             },
             "light_mode": {
@@ -704,7 +727,21 @@
                     "state": "Състояние",
                     "locator": "Локатор",
                     "auto": "Автоматично",
-                    "flash": "Флаш"
+                    "flash": "Флаш",
+                    "breathe": "Дишане",
+                    "random": "Случайно",
+                    "color": "Цвят",
+                    "favorite": "Любим",
+                    "multi_color": "Многоцветен",
+                    "custom": "Потребителски",
+                    "mode_1": "Режим 1",
+                    "mode_2": "Режим 2",
+                    "mode_3": "Режим 3",
+                    "door": "Врата",
+                    "24h": "24 часа",
+                    "30m": "30 минути",
+                    "1m": "1 минута"
+                    
                 }
             },
             "mopping": {
@@ -793,6 +830,8 @@
                 "state": {
                     "cancel": "Отказ",
                     "continuous": "Непрекъснато",
+                    "custom": "Потребителски",
+                    "immediate": "Незабавно",
                     "5s": "5 секунди",
                     "10s": "10 секунди",
                     "15s": "15 секунди",
@@ -865,7 +904,16 @@
                     "4d": "4 дни",
                     "5d": "5 дни",
                     "6d": "6 дни",
-                    "7d": "7 дни"
+                    "7d": "7 дни",
+                    "10d": "10 дни",
+                    "30d": "30 дни",
+                    "60d": "60 дни",
+                    "80d": "80 дни",
+                    "90d": "90 дни",
+                    "100d": "100 дни",
+                    "120d": "120 дни",
+                    "160d": "160 дни",
+                    "365d": "365 дни"
                 }
             },
             "temperature_unit": {
@@ -1155,6 +1203,12 @@
             "ambient_temperature": {
                 "name": "Температура на околната среда"
             },
+            "inlet_temperature": {
+                "name": "Температура на входа"
+            },
+            "outlet_temperature": {
+                "name": "Температура на изхода"
+            },
             "cleanliness": {
                 "name": "Чистота",
                 "state": {
@@ -1172,6 +1226,17 @@
                     "poor": "Лошо",
                     "severe": "Тежко",
                     "danger": "Опасност"
+                }
+            },
+            "sd_status": {
+                "name": "Статус на SD картата",
+                "state": {
+                    "fault": "Неизправен",
+                    "formatting": "Форматиране",
+                    "full": "Пълен",
+                    "missing": "Липсва",
+                    "normal": "Нормално",
+                    "unformatted": "Неформатиран"
                 }
             },
             "status": {
@@ -1233,6 +1298,7 @@
                     "occupied": "Зает",
                     "normal": "Нормално",
                     "low": "Ниско",
+                    "medium": "Средно",
                     "high": "Високо",
                     "unwashed": "Непочистен",
                     "pre_washing": "Предварително измиване",
@@ -1252,8 +1318,6 @@
                     "full": "Пълен",
                     "empty": "Празен",
                     "missing": "Липсва",
-                    "formatting": "Форматиране",
-                    "unformatted": "Неформатиран",
                     "failed": "Неуспешен",
                     "replying": "Отговаряне",
                     "playback": "Възпроизвеждане",
@@ -1374,6 +1438,9 @@
                     "off": "Отворен",
                     "on": "Затворен"
                 }
+            },
+            "camera_record": {
+                "name": "Запис на камерата"
             },
             "do_not_disturb": {
                 "name": "Не безпокойте"
